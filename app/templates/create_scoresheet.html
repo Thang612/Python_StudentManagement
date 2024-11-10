@@ -1,0 +1,68 @@
+{% extends 'layout/base.html' %}
+{% block content %}
+<div class="container" style="padding: 130px">
+    <h1 class="mb-4">Enter student scores</h1>
+    <form class="row"  method="get" action="create_scoresheet">
+        <div class="col-md-4 form-holder">
+            <label class="form-label h6">
+                <i class="fa-solid fa-signature mr-2"></i>
+                Classes
+            </label>
+            <select class="w-100 p-1 text-center rounded" name="classes">
+                {% for c in classes %}
+                <option value="{{c.Class.id}}">{{ c.Grade.name }}{{ c.Class.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="col-md-4 form-holder">
+            <label class="form-label h6">
+                <i class="fa-solid fa-signature mr-2"></i>
+                Semester
+            </label>
+            <select class="w-100 p-1 text-center rounded" name="semester">
+                {% for s in semester %}
+                <option value="{{s.Semester.id}}">{{ s.Semester.name }} - {{ s.Year.year }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="col-md-2 ">
+            <button class="rounded ml-4" style="margin-top: 15px;" type="submit text-center">
+                Find
+            </button>
+        </div>
+    </form>
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">First Name</th>
+            <th scope="col">Date of Birth</th>
+            <th scope="col">Adress</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for s in student_list %}
+        <tr>
+
+            <th scope="row">{{ s.id }}</th>
+            <td>{{ s.last_name }}</td>
+            <td>{{ s.first_name }}</td>
+            <td>{{ s.date_of_birth }}</td>
+            <td>{{ s.address }}</td>
+            <td>
+                <form style="padding: 0; box-shadow: none" action="/create_scoresheet/add?student_id_add={{ s.id}}">
+                    <input type="hidden" name="student_id_add" value="{{s.id}}">
+                    <button style="margin:0" type="submit" class="btn btn-primary rounded">
+                        Add Score
+                    </button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+
+        </tbody>
+    </table>
+</div>
+{% endblock %}

@@ -1,0 +1,83 @@
+{% extends 'admin/master.html' %}
+
+{% block body %}
+{% if current_user.is_authenticated %}
+<div class="pt-5 mt-5">
+<div class="wrapper">
+    <div class="alert alert-success alert-dismissible">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <strong><i class="fa-solid fa-bullhorn" style="font-size: 36px"></i></strong>
+        <span class="ml-4 h3">Welcome to your {{current_user.name}}!</span>
+    </div>
+</div>
+<div class="content">
+    <div class="page-inner">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header bg-primary p-3">
+                        <h2 class="card-title text-white">General statistics</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group-default">
+                                    <div class="pt-2 pb-2">
+                                        <span class="text-black" style="font-size: 18px; font-weight: 700;">Number of students:
+                                            <span class="text-danger">  {{ students }} </span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group-default">
+                                    <div class="pt-2 pb-2">
+                                        <span class="text-black fw-bold" style="font-size: 18px; font-weight: 700;">Number of classes:
+                                             <span class="text-danger">  {{ teachers }}</span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group-default">
+                                    <div class="pt-2 pb-2">
+                                        <span class="text-black fw-bold" style="font-size: 18px; font-weight: 700;">Number of subjects :
+                                             <span class="text-danger">  {{ teachers }}</span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group-default">
+                                    <div class="pt-2 pb-2">
+                                        <span class="text-black fw-bold" style="font-size: 18px; font-weight: 700;">Number of teachers:
+                                             <span class="text-danger">  {{ students }}</span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <div>
+                            <div class="item">
+                                <img class="img-fluid"
+                                     src="https://thcsxuantruong.namdinh.edu.vn/upload/19012/fck/files/2021_12_31_01_07_551.jpg"
+                                     alt="Owl Image"/>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+{% else %}
+
+{% endif %}
+{% endblock %}
